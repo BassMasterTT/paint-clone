@@ -48,6 +48,7 @@ brushColorBtn.addEventListener('change', () => {
 bucketColorBtn.addEventListener('change', () => {
   bucketColor = `#${bucketColorBtn.value}`;
   createCanvas();
+  restoreCanvas();
 });
 
 // Eraser
@@ -147,15 +148,15 @@ canvas.addEventListener('mousemove', (event) => {
     const currentPosition = getMousePosition(event);
     context.lineTo(currentPosition.x, currentPosition.y);
     context.stroke();
-      storeDrawn(
-        currentPosition.x,
-        currentPosition.y,
-        currentSize,
-        currentColor,
-        isEraser,
-      );
-    } else {
-      storeDrawn(undefined);
+    storeDrawn(
+      currentPosition.x,
+      currentPosition.y,
+      currentSize,
+      currentColor,
+      isEraser
+    );
+  } else {
+    storeDrawn(undefined);
   }
 });
 
